@@ -3,6 +3,7 @@ import os
 from flask import Flask
 from dotenv import load_dotenv
 from app.extensions import db
+from app.routes import web_bp
 
 load_dotenv()
 
@@ -13,6 +14,8 @@ def create_app():
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 
     db.init_app(app)
+
+    app.register_blueprint(web_bp) #* registra no app as rotas que criamos dentro do arquivo web.bp
 
     with app.app_context():
         db.create_all()
