@@ -41,7 +41,7 @@
                                         <i class="bi bi-pencil"></i>
                                     </a>
 
-                                    <form action="{{ url_for('web.excluir_categoria_view', id=categoria.id) }}" method="DELETE" onsubmit="return confirm ('Excluir a categoria {{categoria.nome}}?');">
+                                    <form action="{{ url_for('web.excluir_categoria_view', id=categoria.id) }}" method="POST" onsubmit="return confirm ('Excluir a categoria {{categoria.nome}}?');">
                                         <button class="btn btn-sm btn-outline-danger">
                                             <i class="bi bi-trash"></i>
                                         </button>

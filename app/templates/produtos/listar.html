@@ -41,11 +41,11 @@
                             </td>
                             <td>
                                 <div class="d-flex justify-content-center gap-2">
-                                    <a {#href="{{ url_for('web.editar_produto_view', id=produto.id) }}"#} class="btn btn-sm btn-outline-primary">
+                                    <a href="{{ url_for('web.editar_produto_view', id=produto.id) }}" class="btn btn-sm btn-outline-primary">
                                         <i class="bi bi-pencil"></i>
                                     </a>
 
-                                    <form action="{{ url_for('web.excluir_produto_view', id=produto.id) }}" method="DELETE" onsubmit="return confirm('Deseja retirar {{ produto.nome }} do estoque?');">
+                                    <form action="{{ url_for('web.excluir_produto_view', id=produto.id) }}" method="POST" onsubmit="return confirm('Deseja retirar {{ produto.nome }} do estoque?');">
                                         <button class="btn btn-sm btn-outline-danger">
                                             <i class="bi bi-trash"></i>
                                         </button>

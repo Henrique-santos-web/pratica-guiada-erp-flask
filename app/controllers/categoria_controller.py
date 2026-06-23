@@ -1,8 +1,8 @@
 from app.extensions import db
-from app.models import Categoria, Produto
+from app.models import Categoria
 
 def listar_todas_categorias():
-    return Produto.query.order_by(Produto.id.desc()).all()
+    return Categoria.query.order_by(Categoria.id.desc()).all()
 
 
 def obter_categoria(categoria_id):
@@ -28,3 +28,18 @@ def salvar_categoria(nome, categoria_id=None):
     except Exception as e:
         db.session.rollback()
         return False, f"Erro interno: {str(e)}"
+    
+
+def excluir_categoria(categoria_id):
+    categoria = obter_categoria(categoria_id)
+
+    if categoria.produtos:
+        return False, "Não é possivel exlcuir uma categoria que possui produtos vinculados"
+    
+    try:
+        db.session.delete(categoria)
+        db.session.commit()
+        return True, "Categoria excluida com sucesso!"
+    except Exception as e:
+        db.session.rollback()
+        return False, f"Erro ao excluir categoria: {str(e)}"

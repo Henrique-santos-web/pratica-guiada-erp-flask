@@ -46,7 +46,7 @@
                 {% for categoria, mensagem in messages %}
                     <div class="alert alert-{{ categoria }} alert-dismissible fade show shadow-sm" role="alert">
                         {{ mensagem }}
-                        <button type="button" class="btn-clone" data-bs-dimiss="alert" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 {% endfor %}
             {% endif %}
